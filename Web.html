@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Drug Information</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-      $(document).ready(function() {
-        $("#search-form").submit(function(event) {
-          event.preventDefault();
-          var drug_name = $("#drug-name").val();
-          $.get("/search?drug_name=" + drug_name, function(data) {
-            $("#drug-info").html(data);
-          });
-        });
-      });
-    </script>
+    <title>Medicine Search</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <h1>Drug Information</h1>
-    <form id="search-form" method="GET" action="/search">
-      <label for="drug-name">Enter the name of a drug:</label>
-      <input type="text" id="drug-name" name="drug_name">
-      <button type="submit">Search</button>
-    </form>    
-    <div id="drug-info"></div>
-</body>
+    <div class="container">
+      <h1>Medicine Search</h1>
+      <div class="form-container">
+        <form onsubmit="searchMedicine(); return false;">
+          <input type="text" id="medicine_name" placeholder="Enter medicine name...">
+          <button type="submit">Search</button>
+        </form>
+      </div>
+      <div class="result-container" id="result-container"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>
